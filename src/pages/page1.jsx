@@ -166,6 +166,7 @@ const App = () => {
         <button onClick={newGame}>Jogar novamente</button>
       </div>
       <div id="loser" className={classNameL}>
+        <span>😢</span>
         <h3>Você Perdeu!</h3>
         <button onClick={newGame}>Jogar novamente</button>
       </div>
