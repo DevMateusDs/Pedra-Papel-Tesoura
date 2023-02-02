@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Pedra from "../img/pedra.png";
 import Papel from "../img/papel.png";
 import Tesoura from "../img/tesoura.png";
+import Jokenpo from "../img/jokenpo.webp"
 import "./style.css";
 
 const App = () => {
@@ -11,6 +12,8 @@ const App = () => {
   const [playerUser, setPlayerUser] = useState("");
   const [classNameW, setClassnameW] = useState("container-game end-screen none");
   const [classNameL, setClassnameL] = useState("container-game end-screen none");
+  const [classNameUser, setClassNameUser] = useState("container-nameUser none");
+  const [nameUser, setNameUser] = useState("");
   var [contUser, setContUser] = useState(0);
   var [contPc, setContPc] = useState(0);
   let player1 = "";
@@ -113,12 +116,25 @@ const App = () => {
     setClassnameL("container-game end-screen none");
   };
 
+  useEffect(() => {
+    if(!sessionStorage.getItem("nameUser")){
+      setClassNameUser("container-nameUser")
+    }
+  },[])
+  
+  const sessionNameUser = () => {
+    sessionStorage.setItem("nameUser", nameUser)
+    window.location.reload(true)
+  }
+
+  const nomeUser = sessionStorage.getItem("nameUser")
+
   return (
     <div className="container">
       <div id="game" className="container-game">
         <h1>Jokenpô</h1>
         <div className="bloco">
-          <div className="label bg-green">USER</div>
+          <div className="label bg-green">{nomeUser}</div>
           <div className="label bg-red">PC</div>
           <div className="placar">
             {contUser}:{contPc}
@@ -169,6 +185,16 @@ const App = () => {
         <span>😢</span>
         <h3>Você Perdeu!</h3>
         <button onClick={newGame}>Jogar novamente</button>
+      </div>
+      <div id="nameUser" className={classNameUser}>
+        <img src={Jokenpo} alt="Jokenpo"/>
+        <input 
+        type="text" 
+        placeholder="Informe seu nome!"
+        value={nameUser}
+        onChange={(e) => setNameUser(e.target.value)}
+        />
+        <botton onClick={sessionNameUser}>Jogar</botton>
       </div>
     </div>
   );

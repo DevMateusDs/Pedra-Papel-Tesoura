@@ -24,6 +24,20 @@
   margin: 2px;
 }
 
+.container-nameUser {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  position: absolute;
+  width: 360px;
+  min-height: 650px;
+  background: var(--white);
+  box-shadow: 0px 0px 3px 3px rgb(0 0 0 / 30%);
+  border-radius: 10px;
+  margin: 2px;
+}
+
 .none {
   display: none;
 }
@@ -203,4 +217,44 @@ label {
 .btn-play:hover {
   background-color: var(--blue);
   color: var(--white);
+}
+
+.container-nameUser input {
+  width: 70%;
+  border-radius: 10px;
+  padding: 10px;
+  border: 2px solid var(--blue);
+}
+
+.container-nameUser input:focus-visible {
+  outline: none;
+}
+
+.container-nameUser botton {
+  display: flex;
+  justify-content: space-around;
+  width: 70%;
+  padding: 10px;
+  border: 2px solid var(--blue);
+  border-radius: 10px;
+  background-color: var(--grey);
+  color: var(--dark);
+  font-size: 1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.container-nameUser botton:hover {
+  background-color: var(--blue);
+  color: var(--white);
+  transition: 0.3s;
+}
+
+.container-nameUser img {
+  width: 12em;
+  border: 2px solid var(--blue);
+  background-color: var(--grey);
+  padding: 10px;
+  border-radius: 10px;
 }
