@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Pedra from "../img/pedra.png";
 import Papel from "../img/papel.png";
 import Tesoura from "../img/tesoura.png";
-import Jokenpo from "../img/jokenpo.webp"
+import Jokenpo from "../img/jokenpo.webp";
 import "./style.css";
 
 const App = () => {
@@ -10,12 +10,16 @@ const App = () => {
   const [pcImg, setPcImg] = useState("");
   const [isDisabled, setIsDisabled] = useState(false);
   const [playerUser, setPlayerUser] = useState("");
-  const [classNameW, setClassnameW] = useState("container-game end-screen none");
-  const [classNameL, setClassnameL] = useState("container-game end-screen none");
+  const [classNameW, setClassnameW] = useState(
+    "container-game end-screen none"
+  );
+  const [classNameL, setClassnameL] = useState(
+    "container-game end-screen none"
+  );
   const [classNameUser, setClassNameUser] = useState("container-nameUser none");
   const [nameUser, setNameUser] = useState("");
-  var [contUser, setContUser] = useState(0);
-  var [contPc, setContPc] = useState(0);
+  let [user, setUser] = useState(0);
+  let [pc, setPc] = useState(0);
   let player1 = "";
   let player2 = "";
 
@@ -82,18 +86,18 @@ const App = () => {
 
     if (win == 0) {
     } else if (win > 0) {
-      contUser = contUser + 1;
-      setContUser(contUser);
+      user = user + 1;
+      setUser(user);
     } else {
-      contPc = contPc + 1;
-      setContPc(contPc);
+      pc = pc + 1;
+      setPc(pc);
     }
 
-    if (contUser >= 5) {
+    if (user >= 5) {
       setClassnameW("container-game end-screen center");
     }
 
-    if (contPc >= 5) {
+    if (pc >= 5) {
       setClassnameL("container-game end-screen center");
     }
 
@@ -109,25 +113,27 @@ const App = () => {
   };
 
   const newGame = () => {
-    setContUser(0);
-    setContPc(0);
+    setUser(0);
+    setPc(0);
     reset();
     setClassnameW("container-game end-screen none");
     setClassnameL("container-game end-screen none");
   };
 
   useEffect(() => {
-    if(!sessionStorage.getItem("nameUser")){
-      setClassNameUser("container-nameUser")
+    if (!sessionStorage.getItem("nameUser")) {
+      setClassNameUser("container-nameUser");
     }
-  },[])
-  
-  const sessionNameUser = () => {
-    sessionStorage.setItem("nameUser", nameUser)
-    window.location.reload(true)
-  }
+  }, []);
 
-  const nomeUser = sessionStorage.getItem("nameUser")
+  const sessionNameUser = () => {
+    sessionStorage.setItem("nameUser", nameUser);
+    window.location.reload(true);
+  };
+
+  const nomeUser = sessionStorage.getItem("nameUser");
+
+  document.title = "Jokenpô";
 
   return (
     <div className="container">
@@ -137,7 +143,7 @@ const App = () => {
           <div className="label bg-green">{nomeUser}</div>
           <div className="label bg-red">PC</div>
           <div className="placar">
-            {contUser}:{contPc}
+            {user}:{pc}
           </div>
         </div>
         <div className="bloco bg-grey selected-image">
@@ -187,12 +193,12 @@ const App = () => {
         <button onClick={newGame}>Jogar novamente</button>
       </div>
       <div id="nameUser" className={classNameUser}>
-        <img src={Jokenpo} alt="Jokenpo"/>
-        <input 
-        type="text" 
-        placeholder="Informe seu nome!"
-        value={nameUser}
-        onChange={(e) => setNameUser(e.target.value)}
+        <img src={Jokenpo} alt="Jokenpo" />
+        <input
+          type="text"
+          placeholder="Informe seu nome!"
+          value={nameUser}
+          onChange={(e) => setNameUser(e.target.value)}
         />
         <botton onClick={sessionNameUser}>Jogar</botton>
       </div>
