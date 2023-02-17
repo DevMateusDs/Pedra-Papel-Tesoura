@@ -9,7 +9,7 @@
 <br>
 
 > ## Sobre o jogo 🎮:
-> - ### Creio que todo mundo já brincou de Jokenpô alguma vez na vida. O jogo é bem simples, escolha sua jogada e vença 5 (cinco) vezes para ganhar a rodada.
+> - ### Creio que todo mundo já brincou de Jokenpô alguma vez na vida. O jogo é bem simples, informe o seu nome e depois escolha sua jogada e vença 5 (cinco) vezes para ganhar a rodada.
 
 <br>
 
